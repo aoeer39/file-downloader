@@ -1,0 +1,19 @@
+name: Download
+
+on:
+  workflow_dispatch:
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Axel
+        run: sudo apt-get install -y axel
+      - name: Download file
+        run: axel -o file/ https://api18.ilovepdf.com/v1/download/qA48brhyvpgzj181m4zmA02mq4sydvAh2frf8ms5l4cj2m4mrddrwzhj0s8n0hA6bnm71cfmqyjf31kl6l0f3zwsj84hbq1mtj02q0t2b0htb28hhv90js812ysvd2t5hh2v084h7987mm3vkkfbqk4r0hyc19j1kzc091pcfvn82c0w93p1
+      - name: Upload file
+        uses: actions/upload-artifact@v3
+        with:
+          path: file/
